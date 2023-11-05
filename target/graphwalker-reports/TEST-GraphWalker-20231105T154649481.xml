@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testsuites time="14.521" tests="1" failures="0" errors="1">
-    <testsuite name="GraphWalker" tests="1" failures="0" errors="1" time="14.521" timestamp="2023-11-05T10:39:42">
+<testsuites time="2.847" tests="1" failures="0" errors="1">
+    <testsuite name="GraphWalker" tests="1" failures="0" errors="1" time="2.847" timestamp="2023-11-05T15:46:49">
         <properties>
             <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
             <property name="classworlds.conf" value="C:\Program Files (x86)\maven\bin\m2.conf"/>
@@ -125,7 +125,7 @@
             <property name="user.timezone" value=""/>
             <property name="user.variant" value=""/>
         </properties>
-        <testcase name="SomeSmallTest" time="14.521" classname="com.company.SomeSmallTest">
+        <testcase name="LoginTrelloTest" time="2.847" classname="com.company.LoginTrelloTest">
             <error type="java.lang.reflect.InvocationTargetException">
                 java.lang.reflect.InvocationTargetException&#13;
                 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
@@ -170,52 +170,26 @@
                 	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:226)&#13;
                 	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:407)&#13;
                 	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:348)&#13;
-                Caused by: Element not found {#productTitle}&#13;
-                Expected: text "Practical Model-Based Testing: A Tools Approach"&#13;
-                Screenshot: file:/C:/Users/Oana/Desktop/TSS%20PROIECT/YouTube-GraphWalker/build/reports/tests/1699173604280.0.png&#13;
-                Page source: file:/C:/Users/Oana/Desktop/TSS%20PROIECT/YouTube-GraphWalker/build/reports/tests/1699173604280.0.html&#13;
-                Timeout: 4 s.&#13;
-                Caused by: NoSuchElementException: Unable to locate element: #productTitle&#13;
-                	at com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:87)&#13;
-                	at com.codeborne.selenide.impl.ElementFinder.createElementNotFoundError(ElementFinder.java:122)&#13;
-                	at com.codeborne.selenide.impl.WebElementSource.checkConditionAndReturnElement(WebElementSource.java:129)&#13;
-                	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:98)&#13;
-                	at com.codeborne.selenide.commands.Should.execute(Should.java:30)&#13;
-                	at com.codeborne.selenide.commands.Should.execute(Should.java:14)&#13;
-                	at com.codeborne.selenide.commands.Commands.execute(Commands.java:155)&#13;
-                	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:129)&#13;
-                	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:81)&#13;
-                	at com.sun.proxy.$Proxy69.shouldHave(Unknown Source)&#13;
-                	at com.company.SomeSmallTest.v_BookInformation(SomeSmallTest.java:52)&#13;
-                	... 42 more&#13;
-                Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: #productTitle
-                For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-                Build info: version: '4.4.0', revision: 'e5c75ed026a'
+                Caused by: org.openqa.selenium.ElementNotInteractableException: Element &lt;input id="password" class="css-1cab8vv" name="password" type="password"&gt; is not reachable by keyboard
+                Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
                 System info: host: 'DESKTOP-V5VDNJI', ip: '10.10.16.234', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
                 Driver info: org.openqa.selenium.firefox.FirefoxDriver
-                Command: [03df6c41-5b08-482b-a6f3-97d9f1254bf0, findElement {using=css selector, value=#productTitle}]
-                Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 119.0, moz:accessibilityChecks: false, moz:buildID: 20231019122658, moz:debuggerAddress: 127.0.0.1:53526, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 4456, moz:profile: C:\Users\Oana\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://127.0.0.1:53526/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept}
-                Session ID: 03df6c41-5b08-482b-a6f3-97d9f1254bf0&#13;
-                	at jdk.internal.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)&#13;
+                Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 119.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20231019122658, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 10664, moz:profile: C:\Users\Oana\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+                Session ID: 46ba8253-5749-4e7c-a99f-3e50f8b80310&#13;
+                	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
+                	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)&#13;
                 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)&#13;
                 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)&#13;
-                	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)&#13;
-                	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)&#13;
-                	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)&#13;
-                	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)&#13;
-                	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)&#13;
-                	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)&#13;
-                	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)&#13;
-                	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)&#13;
-                	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)&#13;
-                	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:365)&#13;
-                	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)&#13;
-                	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:70)&#13;
-                	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:44)&#13;
-                	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:33)&#13;
-                	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:102)&#13;
-                	at com.codeborne.selenide.impl.WebElementSource.checkConditionAndReturnElement(WebElementSource.java:110)&#13;
-                	... 50 more&#13;
+                	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)&#13;
+                	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)&#13;
+                	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)&#13;
+                	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)&#13;
+                	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;
+                	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;
+                	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)&#13;
+                	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:106)&#13;
+                	at com.company.LoginTrelloTest.v_EnterPassword(LoginTrelloTest.java:72)&#13;
+                	... 42 more&#13;
 </error>
         </testcase>
     </testsuite>

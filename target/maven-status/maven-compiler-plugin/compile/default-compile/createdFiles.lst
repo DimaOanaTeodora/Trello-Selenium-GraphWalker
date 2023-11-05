@@ -1,7 +1,4 @@
 com\company\Runner.class
-com\company\SmallTest.class
-com\company\SomeSmallTest.class
 com\company\LoginTrelloModel.class
+com\company\SmallTest.class
 com\company\LoginTrelloTest.class
-com\company\ViewLaterTest.class
-com\company\ShoppingCart.class

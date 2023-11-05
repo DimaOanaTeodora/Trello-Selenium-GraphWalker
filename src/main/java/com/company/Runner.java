@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.SomeSmallTest;
 import org.graphwalker.java.test.Result;
 import org.graphwalker.java.test.TestExecutor;
 import org.graphwalker.java.test.Executor;

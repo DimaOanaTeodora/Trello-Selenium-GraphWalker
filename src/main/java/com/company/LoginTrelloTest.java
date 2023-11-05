@@ -28,6 +28,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
 
     private static final Logger logger = LoggerFactory.getLogger(LoginTrelloTest.class);
     WebDriver driver;
+    WebDriverWait wait;
 
     @BeforeExecution
     public void setup() {
@@ -42,6 +43,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
 
         // Initialize the WebDriver
         driver = new FirefoxDriver(options);
+        wait = new WebDriverWait(driver, 4);
     }
 
     @AfterExecution
@@ -68,13 +70,15 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
 
     public void v_EnterPassword() {
         // Enter Trello credentials - password
-        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
+        //WebElement passwordField = driver.findElement(By.id("password"));
         passwordField.sendKeys("ContTester1234");
     }
 
     public void v_ViewMainWorkspace() {
         // Verify if the page was loaded
-        WebElement welcomeText = driver.findElement(By.linkText("Most popular templates"));
+        WebElement welcomeText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("popover-boundary")));
+        //driver.findElement(By.id("popover-boundary"));
         if (welcomeText.isDisplayed()) {
             System.out.println("Element welcomeText exists and is displayed.");
         } else {
