@@ -1,0 +1,93 @@
+{
+  "models": [
+    {
+      "name": "LoginTrelloModel",
+      "id": "c0bf6a8e-91ef-40db-a68a-7aa7ec1ce9b0",
+      "generator": "random(edge_coverage(100))",
+      "actions": [
+        ""
+      ],
+      "vertices": [
+        {
+          "id": "n2",
+          "name": "v_Trello",
+          "actions": [],
+          "requirements": [
+            "U"
+          ],
+          "properties": {
+            "x": -10.412944615028449,
+            "y": 115.66708390015405,
+            "description": "Verify that Amazon's home page is properly displayed."
+          }
+        },
+        {
+          "id": "n3",
+          "name": "v_EnterUsername",
+          "actions": [],
+          "requirements": [
+            "U"
+          ],
+          "properties": {
+            "x": -100.57134021381405,
+            "y": 275.55366784960654,
+            "description": "Verify that in the search result list, the book 'Practical Model-Based Testing: A Tools Approach by Mark Utting and Bruno Legeard' exists."
+          }
+        },
+        {
+          "id": "e0389689-af3d-4388-977d-465c044a62bd",
+          "name": "v_EnterPassword",
+          "properties": {
+            "x": 266.6385232032041,
+            "y": 275.1464731987787
+          }
+        },
+        {
+          "id": "1d4777b8-6190-43e1-840d-cbe1e8843912",
+          "name": "v_ViewMainWorkspace",
+          "properties": {
+            "x": 227.05735457286391,
+            "y": 95.2438614682273
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "c2a189b6-bd93-4fa8-a32a-c5d0aafe4a0a",
+          "name": "e_EnterBaseURL",
+          "actions": [],
+          "requirements": [],
+          "properties": [],
+          "sourceVertexId": "n2",
+          "targetVertexId": "n2"
+        },
+        {
+          "id": "e2",
+          "name": "e_gotoLoginState",
+          "actions": [],
+          "requirements": [],
+          "properties": {
+            "description": "In the search field, enter 'Model-based testing', and press enter."
+          },
+          "sourceVertexId": "n2",
+          "targetVertexId": "n3"
+        },
+        {
+          "id": "6b429483-1176-48fb-93f0-64e2f3eb4f11",
+          "name": "e_gotoNextSection",
+          "sourceVertexId": "n3",
+          "targetVertexId": "e0389689-af3d-4388-977d-465c044a62bd"
+        },
+        {
+          "id": "d17435e4-b652-4b21-a385-bb2f48119f91",
+          "name": "e_submitLoginForm",
+          "sourceVertexId": "e0389689-af3d-4388-977d-465c044a62bd",
+          "targetVertexId": "1d4777b8-6190-43e1-840d-cbe1e8843912"
+        }
+      ],
+      "startElementId": "c2a189b6-bd93-4fa8-a32a-c5d0aafe4a0a"
+    }
+  ],
+  "selectedModelIndex": 0,
+  "selectedElementId": null
+}

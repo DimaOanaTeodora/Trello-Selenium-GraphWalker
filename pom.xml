@@ -43,6 +43,12 @@
 
   <dependencies>
         <dependency>
+        <!-- Selenium-->
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version> <!-- Use the latest version -->
+        </dependency>
+        <dependency>
           <!-- for GW Player-->
           <groupId>org.graphwalker</groupId>
           <artifactId>graphwalker-websocket</artifactId>

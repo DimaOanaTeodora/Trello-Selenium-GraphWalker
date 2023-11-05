@@ -19,9 +19,14 @@ public class Runner {
             Veterinariens.class);
     */
 
-    TestExecutor executor = new TestExecutor(
+    /*TestExecutor executor = new TestExecutor(
       SomeSmallTest.class
+    );*/
+
+    TestExecutor executor = new TestExecutor(
+      LoginTrelloTest.class
     );
+
 
     WebSocketServer server = new WebSocketServer(8887, executor.getMachine());
     server.start();
