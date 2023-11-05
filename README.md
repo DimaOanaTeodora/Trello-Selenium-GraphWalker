@@ -9,6 +9,14 @@ Accesare tool
 localhost:9090/studio.html
 ```
 
+## Pornire GW Player
+Deschide ```index.html``` in browser (Firefox)
+
+Run din cmd
+```
+mvn compile exec:java -Dexec.mainClass="com.company.Runner"
+```
+
 ## Creare proiect Maven de la 0 
 
 *myProject = YouTube-GraphWalker aici*
@@ -37,6 +45,7 @@ Porneste testele
 ```
 mvn graphwalker:test
 ```
+
 ## Structura
 Web scrapingul propriu zis are loc din **src\main\java\com\company** .java files, iar modelele de testare generate in GW Studio sunt puse in **src\main\resources** si recunoscute dupa campul ```name``` ca si clase de implementat in .java files.
 ```JSON
