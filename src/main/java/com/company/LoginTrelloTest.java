@@ -30,6 +30,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
 
     private static final Logger logger = LoggerFactory.getLogger(LoginTrelloTest.class);
     private int numOfTasks = 0;
+    private WebElement listElemContainer = null;
     private String selectedList = "";
     WebDriver driver;
     WebDriverWait wait;
@@ -134,19 +135,19 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
 
     public void e_selectToDoList() {
         selectedList = "To do";
-        WebElement listElemContainer = getListContainerElem(selectedList);
+        listElemContainer = getListContainerElem(selectedList);
         numOfTasks = getNumOfListElemsForContainer(listElemContainer);
     }
 
     public void e_selectDoingList() {
         selectedList = "Doing";
-        WebElement listElemContainer = getListContainerElem(selectedList);
+        listElemContainer = getListContainerElem(selectedList);
         numOfTasks = getNumOfListElemsForContainer(listElemContainer);
     }
 
     public void e_selectDoneList() {
         selectedList = "Done";
-        WebElement listElemContainer = getListContainerElem(selectedList);
+        listElemContainer = getListContainerElem(selectedList);
         numOfTasks = getNumOfListElemsForContainer(listElemContainer);
     }
 
@@ -169,7 +170,6 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void v_VerifyListSelected() {
-        WebElement listElemContainer = getListContainerElem(selectedList);
         Assert.assertNotNull(listElemContainer);
         WebElement listLabelElement = listElemContainer.findElement(By.cssSelector("h2[data-testid='list-name']"));
         String listLabel = listLabelElement.getText();
@@ -177,25 +177,21 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void e_openAddForm() {
-        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement addTaskBtn = listElemContainer.findElement(By.cssSelector("button[data-testid='list-add-card-button']"));
         addTaskBtn.click();
     }
 
     public void e_closeAddForm() {
-        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement closeAddTaskBtn = listElemContainer.findElement(By.cssSelector("span[data-testid='CloseIcon']"));
         closeAddTaskBtn.click();
     }
 
     public void v_VerifyAddFormOpen() {
-        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement addTaskTextareaElem = listElemContainer.findElement(By.cssSelector("textarea[data-testid='list-card-composer-textarea']"));
         Assert.assertNotNull(addTaskTextareaElem);
     }
 
     public void e_addNewTask() {
-        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement addTaskTextareaElem = listElemContainer.findElement(By.cssSelector("textarea[data-testid='list-card-composer-textarea']"));
         addTaskTextareaElem.sendKeys(String.format("Test %d", numOfTasks));
 
@@ -208,7 +204,6 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void v_VerifyTaskAdded() {
-        WebElement listElemContainer = getListContainerElem(selectedList);
         Integer newNumOfTasks = getNumOfListElemsForContainer(listElemContainer);
         Assert.assertEquals(newNumOfTasks - 1, numOfTasks);
     }
