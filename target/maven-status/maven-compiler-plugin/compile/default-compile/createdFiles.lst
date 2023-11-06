@@ -1,4 +1,3 @@
 com\company\Runner.class
 com\company\LoginTrelloModel.class
-com\company\SmallTest.class
 com\company\LoginTrelloTest.class

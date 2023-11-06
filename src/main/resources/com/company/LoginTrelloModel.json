@@ -46,8 +46,40 @@
           "id": "1d4777b8-6190-43e1-840d-cbe1e8843912",
           "name": "v_ViewMainWorkspace",
           "properties": {
-            "x": 227.05735457286391,
-            "y": 95.2438614682273
+            "x": 226.05735457286391,
+            "y": 113.2438614682273
+          }
+        },
+        {
+          "id": "ba63ec43-6276-473b-be9e-aedba5a6b868",
+          "name": "v_ViewFirstBoard",
+          "properties": {
+            "x": 539.6092255625043,
+            "y": 112.96925322841321
+          }
+        },
+        {
+          "id": "a502c97c-90f6-408f-8338-d661fda4601a",
+          "name": "v_VerifyListSelected",
+          "properties": {
+            "x": 890.0314434625321,
+            "y": 112.65807188839881
+          }
+        },
+        {
+          "id": "e4115d72-125f-4f9a-adbd-5b2563248ff8",
+          "name": "v_VerifyAddFormOpen",
+          "properties": {
+            "x": 1249.6448128935185,
+            "y": 107.22013373103556
+          }
+        },
+        {
+          "id": "fba1da19-52dc-4a4f-ada0-2c83e53b983f",
+          "name": "v_VerifyTaskAdded",
+          "properties": {
+            "x": 1562,
+            "y": 108
           }
         }
       ],
@@ -83,11 +115,65 @@
           "name": "e_submitLoginForm",
           "sourceVertexId": "e0389689-af3d-4388-977d-465c044a62bd",
           "targetVertexId": "1d4777b8-6190-43e1-840d-cbe1e8843912"
+        },
+        {
+          "id": "236e1cf4-4b73-4d8c-90a1-9058a0066ba7",
+          "name": "e_gotoFirstBoard",
+          "sourceVertexId": "1d4777b8-6190-43e1-840d-cbe1e8843912",
+          "targetVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868"
+        },
+        {
+          "id": "56eec079-c57a-46cd-bcf9-3bc1cdf62a21",
+          "name": "e_selectToDoList",
+          "sourceVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868",
+          "targetVertexId": "a502c97c-90f6-408f-8338-d661fda4601a"
+        },
+        {
+          "id": "6f91011d-8806-416e-9c20-1bba16cb2256",
+          "name": "e_openAddForm",
+          "sourceVertexId": "a502c97c-90f6-408f-8338-d661fda4601a",
+          "targetVertexId": "e4115d72-125f-4f9a-adbd-5b2563248ff8"
+        },
+        {
+          "id": "5b174f2f-2a37-4a55-b46f-2230322f9760",
+          "name": "e_closeAddForm",
+          "sourceVertexId": "e4115d72-125f-4f9a-adbd-5b2563248ff8",
+          "targetVertexId": "a502c97c-90f6-408f-8338-d661fda4601a"
+        },
+        {
+          "id": "85b75be1-97f7-4b03-a5be-1bcc09e57574",
+          "name": "e_addNewTask",
+          "sourceVertexId": "e4115d72-125f-4f9a-adbd-5b2563248ff8",
+          "targetVertexId": "fba1da19-52dc-4a4f-ada0-2c83e53b983f"
+        },
+        {
+          "id": "f63d4096-7e60-4421-91b8-a2d28d73b5ae",
+          "name": "e_incrementTasks",
+          "sourceVertexId": "fba1da19-52dc-4a4f-ada0-2c83e53b983f",
+          "targetVertexId": "e4115d72-125f-4f9a-adbd-5b2563248ff8"
+        },
+        {
+          "id": "5e6e9152-6b58-4510-b4b2-0d6e52eae5e0",
+          "name": "e_selectDoingList",
+          "sourceVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868",
+          "targetVertexId": "a502c97c-90f6-408f-8338-d661fda4601a"
+        },
+        {
+          "id": "ab2435db-386a-452f-9084-434bf2a7cc13",
+          "name": "e_selectDoneList",
+          "sourceVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868",
+          "targetVertexId": "a502c97c-90f6-408f-8338-d661fda4601a"
+        },
+        {
+          "id": "59f99a0f-404b-4883-bf34-b04e09951261",
+          "name": "e_deselectList",
+          "sourceVertexId": "a502c97c-90f6-408f-8338-d661fda4601a",
+          "targetVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868"
         }
       ],
       "startElementId": "c2a189b6-bd93-4fa8-a32a-c5d0aafe4a0a"
     }
   ],
   "selectedModelIndex": 0,
-  "selectedElementId": null
+  "selectedElementId": "595401f2-d80d-48ca-81db-756307882084"
 }

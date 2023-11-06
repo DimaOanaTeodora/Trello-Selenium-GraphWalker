@@ -31,4 +31,43 @@ public interface LoginTrelloModel {
 
     @Edge()
     void e_gotoNextSection();
+
+    @Vertex()
+    void v_ViewFirstBoard();
+
+    @Edge()
+    void e_gotoFirstBoard();
+
+    @Edge()
+    void e_closeAddForm();
+
+    @Edge()
+    void e_selectToDoList();
+
+    @Vertex()
+    void v_VerifyTaskAdded();
+
+    @Edge()
+    void e_openAddForm();
+
+    @Edge()
+    void e_selectDoingList();
+
+    @Edge()
+    void e_deselectList();
+
+    @Edge()
+    void e_addNewTask();
+
+    @Edge()
+    void e_selectDoneList();
+
+    @Vertex()
+    void v_VerifyListSelected();
+
+    @Vertex()
+    void v_VerifyAddFormOpen();
+
+    @Edge()
+    void e_incrementTasks();
 }
