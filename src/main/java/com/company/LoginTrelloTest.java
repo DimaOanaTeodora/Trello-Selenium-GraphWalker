@@ -23,10 +23,15 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Objects;
+
 @GraphWalker()
 public class LoginTrelloTest extends ExecutionContext implements LoginTrelloModel {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginTrelloTest.class);
+    private int numOfTasks = 0;
+    private String selectedList = "";
+    private WebElement listElemContainer;
     WebDriver driver;
     WebDriverWait wait;
 
@@ -108,5 +113,105 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
         // Click the "Log In" button
         WebElement submitButton = driver.findElement(By.id("login-submit"));
         submitButton.click();
+    }
+
+    public void v_ViewFirstBoard() {
+        // Verify if the page was loaded
+        WebElement boardTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[data-testid='board-name-display']")));
+        //driver.findElement(By.id("popover-boundary"));
+        if (boardTitle.isDisplayed()) {
+            System.out.println("Board title exists and is displayed.");
+        } else {
+            System.out.println("Board title does not exist or is not displayed.");
+            Assert.assertTrue(!boardTitle.isDisplayed());
+        }
+    }
+
+    public void e_gotoFirstBoard() {
+        // Click the "Next" button
+        WebElement firstBoard = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[title='Board project 1']")));
+        firstBoard.click();
+    }
+
+    public void e_selectToDoList() {
+        selectedList = "To Do";
+        selectList("To Do");
+    }
+
+    public void e_selectDoingList() {
+        selectedList = "Doing";
+        selectList("Doing");
+    }
+
+    public void e_selectDoneList() {
+        selectedList = "Done";
+        selectList("Done");
+    }
+
+    public void e_deselectList() {
+        selectedList = "";
+        listElemContainer = null;
+        numOfTasks = 0;
+    }
+
+    private void selectList(String label) {
+        String cssSelectorKey = String.format("//*[text()[contains(., '%s')]]", label);
+        WebElement listLabelElem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(cssSelectorKey)));
+
+        listElemContainer = listLabelElem.findElement(By.xpath("./ancestor::div[@data-testid='list']"));
+        numOfTasks = getNumOfListElemsForContainer(listElemContainer);
+    }
+
+    private Integer getNumOfListElemsForContainer(WebElement container) {
+        WebElement olElement = container.findElement(By.cssSelector("ol[data-testid='list-cards']"));
+        java.util.List<WebElement> liElements = olElement.findElements(By.tagName("li"));
+        return liElements.size();
+    }
+
+    public void v_VerifyListSelected() {
+        Assert.assertNotNull(listElemContainer);
+        WebElement listLabelElement = listElemContainer.findElement(By.cssSelector("h2[data-testid='list-name']"));
+        String listLabel = listLabelElement.getText();
+        Assert.assertEquals(listLabel, selectedList);
+    }
+
+    public void e_openAddForm() {
+        WebElement addTaskBtn = listElemContainer.findElement(By.cssSelector("button[data-testid='list-add-card-button']"));
+        addTaskBtn.click();
+    }
+
+    public void e_closeAddForm() {
+        WebElement closeAddTaskBtn = listElemContainer.findElement(By.cssSelector("button[data-testid='CloseIcon']"));
+        closeAddTaskBtn.click();
+    }
+
+    public void v_VerifyAddFormOpen() {
+        WebElement addTaskTextareaElem = listElemContainer.findElement(By.cssSelector("textarea[data-testid='list-card-composer-textarea']"));
+        Assert.assertNotNull(addTaskTextareaElem);
+    }
+
+    public void e_addNewTask() {
+        WebElement addTaskTextareaElem = listElemContainer.findElement(By.cssSelector("textarea[data-testid='list-card-composer-textarea']"));
+        addTaskTextareaElem.sendKeys(String.format("Test %d", numOfTasks));
+
+        WebElement addTaskButtonElem = listElemContainer.findElement(By.cssSelector("button[data-testid='list-card-composer-add-card-button']"));
+        addTaskButtonElem.click();
+    }
+
+    public void e_incrementTasks() {
+        numOfTasks += 1;
+    }
+
+    public void v_VerifyTaskAdded() {
+        Integer newNumOfTasks = getNumOfListElemsForContainer(listElemContainer);
+        Assert.assertEquals(newNumOfTasks - 1, numOfTasks);
+    }
+
+    public void e_endTest() {
+
+    }
+
+    public void v_FinalNode() {
+        Assert.assertTrue(true);
     }
 }
