@@ -31,7 +31,6 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     private static final Logger logger = LoggerFactory.getLogger(LoginTrelloTest.class);
     private int numOfTasks = 0;
     private String selectedList = "";
-    private WebElement listElemContainer;
     WebDriver driver;
     WebDriverWait wait;
 
@@ -117,7 +116,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
 
     public void v_ViewFirstBoard() {
         // Verify if the page was loaded
-        WebElement boardTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[data-testid='board-name-display']")));
+        WebElement boardTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-testid='list']")));
         //driver.findElement(By.id("popover-boundary"));
         if (boardTitle.isDisplayed()) {
             System.out.println("Board title exists and is displayed.");
@@ -134,32 +133,33 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void e_selectToDoList() {
-        selectedList = "To Do";
-        selectList("To Do");
+        selectedList = "To do";
+        WebElement listElemContainer = getListContainerElem(selectedList);
+        numOfTasks = getNumOfListElemsForContainer(listElemContainer);
     }
 
     public void e_selectDoingList() {
         selectedList = "Doing";
-        selectList("Doing");
+        WebElement listElemContainer = getListContainerElem(selectedList);
+        numOfTasks = getNumOfListElemsForContainer(listElemContainer);
     }
 
     public void e_selectDoneList() {
         selectedList = "Done";
-        selectList("Done");
+        WebElement listElemContainer = getListContainerElem(selectedList);
+        numOfTasks = getNumOfListElemsForContainer(listElemContainer);
     }
 
     public void e_deselectList() {
         selectedList = "";
-        listElemContainer = null;
         numOfTasks = 0;
     }
 
-    private void selectList(String label) {
-        String cssSelectorKey = String.format("//*[text()[contains(., '%s')]]", label);
-        WebElement listLabelElem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(cssSelectorKey)));
+    private WebElement getListContainerElem(String label) {
+        String xpathSelector = String.format("//h2[@data-testid='list-name' and text()='%s']", label);
+        WebElement listLabelElem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathSelector)));
 
-        listElemContainer = listLabelElem.findElement(By.xpath("./ancestor::div[@data-testid='list']"));
-        numOfTasks = getNumOfListElemsForContainer(listElemContainer);
+        return listLabelElem.findElement(By.xpath("./ancestor::div[@data-testid='list']"));
     }
 
     private Integer getNumOfListElemsForContainer(WebElement container) {
@@ -169,6 +169,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void v_VerifyListSelected() {
+        WebElement listElemContainer = getListContainerElem(selectedList);
         Assert.assertNotNull(listElemContainer);
         WebElement listLabelElement = listElemContainer.findElement(By.cssSelector("h2[data-testid='list-name']"));
         String listLabel = listLabelElement.getText();
@@ -176,21 +177,25 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void e_openAddForm() {
+        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement addTaskBtn = listElemContainer.findElement(By.cssSelector("button[data-testid='list-add-card-button']"));
         addTaskBtn.click();
     }
 
     public void e_closeAddForm() {
-        WebElement closeAddTaskBtn = listElemContainer.findElement(By.cssSelector("button[data-testid='CloseIcon']"));
+        WebElement listElemContainer = getListContainerElem(selectedList);
+        WebElement closeAddTaskBtn = listElemContainer.findElement(By.cssSelector("span[data-testid='CloseIcon']"));
         closeAddTaskBtn.click();
     }
 
     public void v_VerifyAddFormOpen() {
+        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement addTaskTextareaElem = listElemContainer.findElement(By.cssSelector("textarea[data-testid='list-card-composer-textarea']"));
         Assert.assertNotNull(addTaskTextareaElem);
     }
 
     public void e_addNewTask() {
+        WebElement listElemContainer = getListContainerElem(selectedList);
         WebElement addTaskTextareaElem = listElemContainer.findElement(By.cssSelector("textarea[data-testid='list-card-composer-textarea']"));
         addTaskTextareaElem.sendKeys(String.format("Test %d", numOfTasks));
 
@@ -203,15 +208,8 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     }
 
     public void v_VerifyTaskAdded() {
+        WebElement listElemContainer = getListContainerElem(selectedList);
         Integer newNumOfTasks = getNumOfListElemsForContainer(listElemContainer);
         Assert.assertEquals(newNumOfTasks - 1, numOfTasks);
-    }
-
-    public void e_endTest() {
-
-    }
-
-    public void v_FinalNode() {
-        Assert.assertTrue(true);
     }
 }

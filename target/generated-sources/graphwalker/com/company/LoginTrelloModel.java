@@ -38,9 +38,6 @@ public interface LoginTrelloModel {
     @Edge()
     void e_gotoFirstBoard();
 
-    @Vertex()
-    void v_FinalNode();
-
     @Edge()
     void e_closeAddForm();
 
@@ -55,9 +52,6 @@ public interface LoginTrelloModel {
 
     @Edge()
     void e_selectDoingList();
-
-    @Edge()
-    void e_endTest();
 
     @Edge()
     void e_deselectList();

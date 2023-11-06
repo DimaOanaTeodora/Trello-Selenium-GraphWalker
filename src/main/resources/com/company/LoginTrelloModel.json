@@ -75,14 +75,6 @@
           }
         },
         {
-          "id": "467fcbd7-31f0-4851-8075-ca7dc15c7497",
-          "name": "v_FinalNode",
-          "properties": {
-            "x": 1834.087808097006,
-            "y": 106.51802514062607
-          }
-        },
-        {
           "id": "fba1da19-52dc-4a4f-ada0-2c83e53b983f",
           "name": "v_VerifyTaskAdded",
           "properties": {
@@ -177,17 +169,11 @@
           "name": "e_deselectList",
           "sourceVertexId": "a502c97c-90f6-408f-8338-d661fda4601a",
           "targetVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868"
-        },
-        {
-          "id": "595401f2-d80d-48ca-81db-756307882084",
-          "name": "e_endTest",
-          "sourceVertexId": "fba1da19-52dc-4a4f-ada0-2c83e53b983f",
-          "targetVertexId": "467fcbd7-31f0-4851-8075-ca7dc15c7497"
         }
       ],
       "startElementId": "c2a189b6-bd93-4fa8-a32a-c5d0aafe4a0a"
     }
   ],
   "selectedModelIndex": 0,
-  "selectedElementId": "467fcbd7-31f0-4851-8075-ca7dc15c7497"
+  "selectedElementId": "595401f2-d80d-48ca-81db-756307882084"
 }
