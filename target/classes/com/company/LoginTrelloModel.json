@@ -62,8 +62,8 @@
           "id": "a502c97c-90f6-408f-8338-d661fda4601a",
           "name": "v_VerifyListSelected",
           "properties": {
-            "x": 890.0314434625321,
-            "y": 112.65807188839881
+            "x": 909.0314434625321,
+            "y": 117.65807188839881
           }
         },
         {
@@ -80,6 +80,30 @@
           "properties": {
             "x": 1562,
             "y": 108
+          }
+        },
+        {
+          "id": "077582e0-ee43-40bc-acc7-c86b2f76b496",
+          "name": "v_VerifyOpenEditMenu",
+          "properties": {
+            "x": 1001.3741958681908,
+            "y": 306.51812539518943
+          }
+        },
+        {
+          "id": "43812f8b-3b56-4893-aba0-ba5b1274de49",
+          "name": "v_VerifyTaskArchived",
+          "properties": {
+            "x": 762.518778770667,
+            "y": 479.33395885162474
+          }
+        },
+        {
+          "id": "806ec7d2-9fba-4b14-ab11-ad89a6062607",
+          "name": "v_VerifyTaskDeleted",
+          "properties": {
+            "x": 469.51877877066704,
+            "y": 319.33395885162474
           }
         }
       ],
@@ -169,11 +193,47 @@
           "name": "e_deselectList",
           "sourceVertexId": "a502c97c-90f6-408f-8338-d661fda4601a",
           "targetVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868"
+        },
+        {
+          "id": "02def43b-b3e9-4b84-941c-b971d657beb7",
+          "name": "e_openEditMenu",
+          "sourceVertexId": "a502c97c-90f6-408f-8338-d661fda4601a",
+          "targetVertexId": "077582e0-ee43-40bc-acc7-c86b2f76b496"
+        },
+        {
+          "id": "8d6e4e04-4b15-4785-b714-9e0b8a1fe3b9",
+          "name": "e_closeEditMenu",
+          "sourceVertexId": "077582e0-ee43-40bc-acc7-c86b2f76b496",
+          "targetVertexId": "a502c97c-90f6-408f-8338-d661fda4601a"
+        },
+        {
+          "id": "1d18c043-6b37-4fb5-94f2-1f62948c19e5",
+          "name": "e_pressArchiveButton",
+          "sourceVertexId": "077582e0-ee43-40bc-acc7-c86b2f76b496",
+          "targetVertexId": "43812f8b-3b56-4893-aba0-ba5b1274de49"
+        },
+        {
+          "id": "87954c90-f297-4fb6-a7a0-914fdf6408fc",
+          "name": "e_pressDeleteButton",
+          "sourceVertexId": "43812f8b-3b56-4893-aba0-ba5b1274de49",
+          "targetVertexId": "806ec7d2-9fba-4b14-ab11-ad89a6062607"
+        },
+        {
+          "id": "d32ea44c-22a5-46e6-8328-b7ec804fc682",
+          "name": "e_deselectList",
+          "sourceVertexId": "806ec7d2-9fba-4b14-ab11-ad89a6062607",
+          "targetVertexId": "ba63ec43-6276-473b-be9e-aedba5a6b868"
+        },
+        {
+          "id": "dd556c0f-b02f-488f-a85a-d4b95409b474",
+          "name": "e_decrementTasks",
+          "sourceVertexId": "806ec7d2-9fba-4b14-ab11-ad89a6062607",
+          "targetVertexId": "a502c97c-90f6-408f-8338-d661fda4601a"
         }
       ],
       "startElementId": "c2a189b6-bd93-4fa8-a32a-c5d0aafe4a0a"
     }
   ],
   "selectedModelIndex": 0,
-  "selectedElementId": "595401f2-d80d-48ca-81db-756307882084"
+  "selectedElementId": null
 }

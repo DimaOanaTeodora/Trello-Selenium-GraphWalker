@@ -23,7 +23,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @GraphWalker()
 public class LoginTrelloTest extends ExecutionContext implements LoginTrelloModel {
@@ -31,6 +33,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     private static final Logger logger = LoggerFactory.getLogger(LoginTrelloTest.class);
     private int numOfTasks = 0;
     private WebElement listElemContainer = null;
+    private WebElement editModalContainer = null;
     private String selectedList = "";
     WebDriver driver;
     WebDriverWait wait;
@@ -154,6 +157,7 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     public void e_deselectList() {
         selectedList = "";
         numOfTasks = 0;
+        editModalContainer = null;
     }
 
     private WebElement getListContainerElem(String label) {
@@ -206,5 +210,63 @@ public class LoginTrelloTest extends ExecutionContext implements LoginTrelloMode
     public void v_VerifyTaskAdded() {
         Integer newNumOfTasks = getNumOfListElemsForContainer(listElemContainer);
         Assert.assertEquals(newNumOfTasks - 1, numOfTasks);
+    }
+
+    public void e_openEditMenu() {
+        if(numOfTasks > 0) {
+            List<WebElement> tasks = listElemContainer.findElements(By.tagName("li"));
+            WebElement firstTask = tasks.get(0);
+            firstTask.click();
+        }
+    }
+
+    public void v_VerifyOpenEditMenu() {
+        if(numOfTasks > 0) {
+            editModalContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.window-overlay")));
+            Assert.assertNotNull(editModalContainer);
+        }
+    }
+
+    public void e_closeEditMenu() {
+        if(numOfTasks > 0) {
+            WebElement closeBtn = editModalContainer.findElement(By.className("icon-md icon-close dialog-close-button js-close-window"));
+            closeBtn.click();
+            editModalContainer = null;
+        }
+    }
+
+    public void e_pressArchiveButton() {
+        if(numOfTasks > 0) {
+            WebElement archiveBtn = editModalContainer.findElement(By.className("button-link js-archive-card"));
+            archiveBtn.click();
+        }
+    }
+
+    public void v_VerifyTaskArchived() {
+        if(numOfTasks > 0) {
+            WebElement unarchiveBtn = editModalContainer.findElement(By.className("button-link js-unarchive-card"));
+            Assert.assertNotNull(unarchiveBtn);
+        }
+    }
+
+    public void e_pressDeleteButton() {
+        if(numOfTasks > 0) {
+            WebElement deleteBtn = editModalContainer.findElement(By.className("button-link js-delete-card negate"));
+            deleteBtn.click();
+        }
+    }
+
+    public void v_VerifyTaskDeleted() {
+        if(numOfTasks > 0) {
+            Integer newNumOfTasks = getNumOfListElemsForContainer(listElemContainer);
+            Assert.assertEquals(newNumOfTasks + 1, numOfTasks);
+        }
+    }
+
+    public void e_decrementTasks() {
+        if(numOfTasks > 0) {
+            numOfTasks--;
+            editModalContainer = null;
+        }
     }
 }

@@ -70,4 +70,28 @@ public interface LoginTrelloModel {
 
     @Edge()
     void e_incrementTasks();
+
+    @Edge()
+    void e_pressArchiveButton();
+
+    @Vertex()
+    void v_VerifyTaskDeleted();
+
+    @Vertex()
+    void v_VerifyTaskArchived();
+
+    @Edge()
+    void e_openEditMenu();
+
+    @Edge()
+    void e_closeEditMenu();
+
+    @Vertex()
+    void v_VerifyOpenEditMenu();
+
+    @Edge()
+    void e_pressDeleteButton();
+
+    @Edge()
+    void e_decrementTasks();
 }
